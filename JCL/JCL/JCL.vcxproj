@@ -153,12 +153,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="cannon.h" />
+    <ClInclude Include="cannonBase.h" />
     <ClInclude Include="physics.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="cannon.cpp" />
+    <ClCompile Include="cannonBase.cpp" />
     <ClCompile Include="JCL.cpp" />
     <ClCompile Include="physics.cpp" />
     <ClCompile Include="player.cpp" />

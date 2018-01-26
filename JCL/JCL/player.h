@@ -1,18 +1,18 @@
 #pragma once
+#include "cannonBase.h"
+#include "cannon.h"
 
 class Player
 {
 private:
-	int m_healthPoints;
-	sf::RectangleShape m_shape;
-	sf::Vector2f m_position;
-	sf::Vector2f m_velocity;
-	sf::Vector2f m_velocityGoal;
+	int m_lightPoints;
+	CannonBase m_cannonBase;
+	Cannon m_cannon;
 
 public:
-	Player(const sf::Vector2f& position = {0, 0});
+	Player(const CannonBase& cannonBase, const Cannon& cannon);
 	~Player() {}
 
-	void draw(sf::RenderWindow& window) const;
+	void draw(sf::RenderWindow& window);
 	void update(const float& deltaTime);
 };
