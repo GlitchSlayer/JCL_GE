@@ -27,5 +27,33 @@ void Cannon::draw(sf::RenderWindow& window)
 
 void Cannon::update(const float& deltaTime)
 {
+	extern sf::Vector2i mousePosition;
+
+	float displacementX = mousePosition.x - m_position.x;
+	float displacementY = mousePosition.y - m_position.y;
+
+	static const float offset = m_shape.getSize().x/2;
+
+	if (displacementX > offset)
+	{
+		if (displacementY > offset)
+			m_shape.setRotation(45);
+		else if (displacementY < -offset)
+			m_shape.setRotation(-45);
+		else m_shape.setRotation(0);
+	}
+	else if (displacementX < 0)
+	{
+		if (displacementY > offset)
+			m_shape.setRotation(-225);
+		else if (displacementY < -offset)
+			m_shape.setRotation(225);
+		else m_shape.setRotation(0);
+	}
+	else if (displacementX <= offset)
+	{
+		m_shape.setRotation(90);
+	}
+
 	m_shape.setPosition(m_position);
 }

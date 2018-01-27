@@ -3,7 +3,6 @@
 class CannonBase
 {
 private:
-	float m_angle;
 	sf::Vector2f m_position;
 	sf::Vector2f m_velocity;
 	sf::Vector2f m_velocityGoal;

@@ -3,7 +3,6 @@
 class Cannon
 {
 private:
-	float angle;
 	sf::Vector2f m_position;
 	sf::RectangleShape m_shape;
 public:
