@@ -6,7 +6,7 @@ Player::Player(const CannonBase& cannonBase, const Cannon& cannon)
 	
 }
 
-void Player::draw(sf::RenderWindow& window)
+void Player::draw(sf::RenderWindow &window)
 {
 	m_cannonBase.draw(window);
 	m_cannon.draw(window);
