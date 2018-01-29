@@ -1,6 +1,4 @@
 #include "stdafx.h"
-#include "Reaper.h"
-
 
 Reaper::Reaper(std::string _name, sf::Vector2f _pos)
 {
