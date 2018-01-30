@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 Cannon::Cannon(const sf::Vector2f& position, const sf::Vector2f& size, const sf::Color& color)
-	: SceneObject(position, size), m_shootDelay(50), m_shootDelayCounter(0)
+	: SceneObject(position, size), m_shootDelay(100), m_shootDelayCounter(100)
 {
 	m_shape.setFillColor(color);
 }
@@ -13,21 +13,18 @@ Cannon::~Cannon()
 
 void Cannon::update(const float& deltaTime)
 {
-	extern sf::Vector2i mousePosition;
-	extern bool g_isLeftMousePressed;
-	extern const float g_M_PI;
+	static const sf::Vector2f initialPosition(m_position);
+	const sf::Vector2f displacement = initialPosition - m_position;
+	const sf::Vector2f distance = sf::Vector2f(App::mousePosition) - m_position - displacement;
 
-	float distanceX = mousePosition.x - m_position.x;
-	float distanceY = mousePosition.y - m_position.y;
-
-	float angle = std::atan2f(distanceY, distanceX) * 180 / g_M_PI;
+	const float angle = std::atan2f(distance.y, distance.x) * 180 / phys::PI;
 
 	m_shape.setRotation(angle);
 
-	if (g_isLeftMousePressed && m_shootDelayCounter >= m_shootDelay)
+	if (App::isLeftMousePressed && m_shootDelayCounter >= m_shootDelay)
 	{
 		Bullet bullet({ m_position.x, m_position.y }, m_shape.getRotation());
-		AllLists::allBullets.emplace_back(bullet);
+		AllLists::allBullets.push_back(bullet);
 		m_shootDelayCounter = 0;
 	}
 	else if (m_shootDelayCounter >= m_shootDelay)

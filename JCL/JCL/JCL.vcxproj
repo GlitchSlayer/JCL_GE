@@ -154,6 +154,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="allLists.h" />
+    <ClInclude Include="application.h" />
     <ClInclude Include="bullet.h" />
     <ClInclude Include="cannon.h" />
     <ClInclude Include="cannonBase.h" />
@@ -169,6 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="allLists.cpp" />
+    <ClCompile Include="application.cpp" />
     <ClCompile Include="bullet.cpp" />
     <ClCompile Include="cannon.cpp" />
     <ClCompile Include="cannonBase.cpp" />

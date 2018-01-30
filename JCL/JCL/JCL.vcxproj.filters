@@ -72,6 +72,9 @@
     <ClInclude Include="bullet.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="application.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="JCL.cpp">
@@ -112,6 +115,9 @@
     </ClCompile>
     <ClCompile Include="cannonBase.cpp">
       <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="application.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

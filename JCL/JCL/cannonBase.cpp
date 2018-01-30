@@ -13,24 +13,21 @@ CannonBase::~CannonBase()
 
 void CannonBase::update(const float& deltaTime)
 {
-	extern bool g_isWPressed, g_isAPressed, g_isSPressed, g_isDPressed;
-	extern const float g_M_PI;
-
-	if (g_isDPressed)
+	if (App::isDPressed)
 		m_velocityGoal.x = 100;
-	else if (g_isAPressed)
+	else if (App::isAPressed)
 		m_velocityGoal.x = -100;
 	else m_velocityGoal.x = 0;
 
-	if (g_isWPressed)
+	if (App::isWPressed)
 		m_velocityGoal.y = -100;
-	else if (g_isSPressed)
+	else if (App::isSPressed)
 		m_velocityGoal.y = 100;
 	else m_velocityGoal.y = 0;
 
 	if (m_velocity.x != 0 && m_velocity.y != 0)
 	{
-		float angle = std::atan2f(m_velocity.y, m_velocity.x) * 180 / g_M_PI;
+		float angle = std::atan2f(m_velocity.y, m_velocity.x) * 180 / phys::PI;
 		m_shape.setRotation(angle);
 	}
 	

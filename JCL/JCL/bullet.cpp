@@ -1,11 +1,9 @@
 #include "stdafx.h"
 
 Bullet::Bullet(const sf::Vector2f& position, const float& direction)
-	:SceneObject(position, {20, 20}), m_speed(100), m_lifePoints(20), isDestroyed(false)
+	:SceneObject(position, {20, 20}), m_speed(150), m_lifePoints(20), isDestroyed(false)
 {
-	extern const float g_M_PI;
-
-	m_direction = { std::cos(direction * g_M_PI / 180), std::sin(direction * g_M_PI / 180) };
+	m_direction = { std::cos(direction * phys::PI / 180), std::sin(direction * phys::PI / 180) };
 	m_shape.setFillColor(sf::Color::Yellow);
 }
 

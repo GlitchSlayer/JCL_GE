@@ -20,7 +20,7 @@ void Player::draw(sf::RenderWindow& window)
 void Player::update(const float& deltaTime)
 {
 	m_cannonBase.update(deltaTime);
-	const sf::Vector2f&& cannonBasePosition = m_cannonBase.getPosition();
+	sf::Vector2f cannonBasePosition = m_cannonBase.getPosition();
 	m_cannon.setPosition(cannonBasePosition);
 	m_cannon.update(deltaTime);
 	m_position = cannonBasePosition;
