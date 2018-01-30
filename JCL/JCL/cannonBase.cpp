@@ -1,17 +1,14 @@
 #include "stdafx.h"
 
 CannonBase::CannonBase(const sf::Vector2f& position, const sf::Vector2f& size, const sf::Color& color)
-	: m_position(position)
+	: SceneObject(position, size)
 {
-	m_shape.setSize(size);
-	m_shape.setOrigin({ m_shape.getSize().x / 2, m_shape.getSize().y / 2 });
-	m_shape.setPosition(position);
 	m_shape.setFillColor(color);
 }
 
-void CannonBase::draw(sf::RenderWindow& window)
+CannonBase::~CannonBase()
 {
-	window.draw(m_shape);
+	std::cout << "CannonBase destroyed\n";
 }
 
 void CannonBase::update(const float& deltaTime)
@@ -44,14 +41,4 @@ void CannonBase::update(const float& deltaTime)
 
 	m_shape.setPosition(m_position);
 	
-}
-
-sf::Vector2f CannonBase::getPosition() const
-{
-	return m_position;
-}
-
-void CannonBase::setPosition(const sf::Vector2f& position)
-{
-	m_position = position;
 }

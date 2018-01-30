@@ -1,9 +1,9 @@
 #include "stdafx.h"
 
-Reaper::Reaper(std::string _name, sf::Vector2f _pos)
+Reaper::Reaper(const sf::Vector2f& position, const sf::Vector2f& size)
+	: Enemy(position, size)
 {
-	m_shape.setSize({ 50, 50 });
-	m_shape.setFillColor(sf::Color::Magenta);
+	m_shape.setFillColor({ 255, 255, 255 });
 }
 
 

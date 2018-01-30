@@ -1,21 +1,17 @@
 #pragma once
-#include "player.h"
-#include "cannon.h"
-#include "cannonBase.h"
-
 
 class Enemy
+	: public SceneObject
 {
-public:
+private:
 	std::string m_name;
-	int m_hp, m_speed, m_damage;
-	sf::Vector2f m_position;
-	sf::RectangleShape m_shape;
-
-	Enemy(std::string _name = "Default name", sf::Vector2f _pos = {500, 500});
-	~Enemy();
-	void taunt();
-	void draw(sf::RenderWindow& window);
-	void update(const float& deltaTime);
+	float m_healthPoints;
+	float m_speed;
+	float m_strength;
+public:
+	Enemy(const sf::Vector2f& position = { 0, 0 }, const sf::Vector2f& size = { 10, 10 });
+	virtual ~Enemy();
+	
+	virtual void update(const float& deltaTime);
 };
 

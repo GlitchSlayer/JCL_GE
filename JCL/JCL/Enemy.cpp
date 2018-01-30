@@ -1,34 +1,24 @@
 #include "stdafx.h"
-#include "Enemy.h"
 
-
-
-
-Enemy::Enemy(std::string _name, sf::Vector2f _pos)
-	:m_name(_name), m_position(_pos), m_speed(20)
+Enemy::Enemy(const sf::Vector2f& position, const sf::Vector2f& size)
+	: SceneObject(position, size), m_speed(20)
 {
-	m_shape.setPosition(m_position);
+	
 }
-
 
 Enemy::~Enemy()
 {
+	std::cout << "Enemy destroyed\n";
 }
 
-void Enemy::taunt() {
-	std::cout << "Die, die, die!";
-}
-
-void Enemy::draw(sf::RenderWindow& window) {
-	window.draw(m_shape);
-}
 void Enemy::update(const float& deltaTime) {
-	Cannon superCannon({800, 100}, { 100, 50 });
-	sf::Vector2f cannon_position = superCannon.getPosition();
-	float dirX = cannon_position.x - m_position.x;
-	float dirY = cannon_position.y - m_position.y;
 
-	float length = std::sqrt(dirX*dirX + dirY * dirY);
+	sf::Vector2f playerPosition = obj::player.getPosition();
+
+	float dirX = playerPosition.x - m_position.x;
+	float dirY = playerPosition.y - m_position.y;
+
+	float length = std::sqrt(dirX * dirX + dirY * dirY);
 
 	if(length != 0) {
 		dirX /= length;
@@ -38,8 +28,9 @@ void Enemy::update(const float& deltaTime) {
 		dirX = 0;
 		dirY = 0;
 	}
+
 	m_position.x += dirX * m_speed * deltaTime;
 	m_position.y += dirY * m_speed * deltaTime;
+
 	m_shape.setPosition(m_position);
-	//std::cout << cannon_position.x << " ";
 }

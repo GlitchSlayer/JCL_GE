@@ -19,17 +19,17 @@
     <Filter Include="Source Files\Entities">
       <UniqueIdentifier>{db121f89-00a7-43a8-88e4-c20b24a18176}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Cannons">
-      <UniqueIdentifier>{2b0b3955-b8c1-4910-bbca-ddad00ddc7e7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Cannons">
-      <UniqueIdentifier>{2a227507-ba73-4937-b5ad-cd8d57f84180}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Additional libraries">
       <UniqueIdentifier>{09e3efd3-64df-49ca-bc55-aade181a7855}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Additional libraries">
       <UniqueIdentifier>{fbb30ed2-88bd-428d-a52b-1da75ed79511}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Generators">
+      <UniqueIdentifier>{0c947748-135a-4383-8126-639425a1d04e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Generators">
+      <UniqueIdentifier>{dda43295-ccf9-45c9-a104-fd172076af68}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -42,15 +42,6 @@
     <ClInclude Include="Reaper.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="cannonBase.h">
-      <Filter>Header Files\Cannons</Filter>
-    </ClInclude>
-    <ClInclude Include="cannon.h">
-      <Filter>Header Files\Cannons</Filter>
-    </ClInclude>
-    <ClInclude Include="bullet.h">
-      <Filter>Header Files\Cannons</Filter>
-    </ClInclude>
     <ClInclude Include="targetver.h">
       <Filter>Header Files\Additional libraries</Filter>
     </ClInclude>
@@ -62,6 +53,24 @@
     </ClInclude>
     <ClInclude Include="allLists.h">
       <Filter>Header Files\Additional libraries</Filter>
+    </ClInclude>
+    <ClInclude Include="objectsStorage.h">
+      <Filter>Header Files\Additional libraries</Filter>
+    </ClInclude>
+    <ClInclude Include="room.h">
+      <Filter>Header Files\Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneObject.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="cannonBase.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="cannon.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="bullet.h">
+      <Filter>Header Files\Entities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -77,15 +86,6 @@
     <ClCompile Include="player.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="bullet.cpp">
-      <Filter>Source Files\Cannons</Filter>
-    </ClCompile>
-    <ClCompile Include="cannon.cpp">
-      <Filter>Source Files\Cannons</Filter>
-    </ClCompile>
-    <ClCompile Include="cannonBase.cpp">
-      <Filter>Source Files\Cannons</Filter>
-    </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files\Additional libraries</Filter>
     </ClCompile>
@@ -94,6 +94,24 @@
     </ClCompile>
     <ClCompile Include="allLists.cpp">
       <Filter>Source Files\Additional libraries</Filter>
+    </ClCompile>
+    <ClCompile Include="objectsStorage.cpp">
+      <Filter>Source Files\Additional libraries</Filter>
+    </ClCompile>
+    <ClCompile Include="sceneObject.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="room.cpp">
+      <Filter>Source Files\Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="bullet.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="cannon.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="cannonBase.cpp">
+      <Filter>Source Files\Entities</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

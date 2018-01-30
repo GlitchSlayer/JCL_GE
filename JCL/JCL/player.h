@@ -3,6 +3,7 @@
 #include "cannon.h"
 
 class Player
+	: public SceneObject
 {
 private:
 	int m_lightPoints;
@@ -11,8 +12,8 @@ private:
 
 public:
 	Player(const CannonBase& cannonBase, const Cannon& cannon);
-	~Player() {}
+	virtual ~Player();
 
-	void draw(sf::RenderWindow& window);
-	void update(const float& deltaTime);
+	virtual void draw(sf::RenderWindow& window);
+	virtual void update(const float& deltaTime);
 };

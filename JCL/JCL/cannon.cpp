@@ -1,27 +1,14 @@
 #include "stdafx.h"
 
 Cannon::Cannon(const sf::Vector2f& position, const sf::Vector2f& size, const sf::Color& color)
-	: m_position(position), m_shootDelay(50), m_shootDelayCounter(0)
+	: SceneObject(position, size), m_shootDelay(50), m_shootDelayCounter(0)
 {
-	m_shape.setSize(size);
-	m_shape.setOrigin({ m_shape.getSize().x / 2, m_shape.getSize().y / 2 });
-	m_shape.setPosition(position);
 	m_shape.setFillColor(color);
 }
 
-sf::Vector2f Cannon::getPosition() const
+Cannon::~Cannon()
 {
-	return m_position;
-}
-
-void Cannon::setPosition(const sf::Vector2f& position)
-{
-	m_position = position;
-}
-
-void Cannon::draw(sf::RenderWindow& window)
-{
-	window.draw(m_shape);
+	std::cout << "Cannon destroyed\n";
 }
 
 void Cannon::update(const float& deltaTime)
@@ -39,8 +26,8 @@ void Cannon::update(const float& deltaTime)
 
 	if (g_isLeftMousePressed && m_shootDelayCounter >= m_shootDelay)
 	{
-		Bullet bullet( { m_position.x, m_position.y }, m_shape.getRotation() );
-		AllLists::allBullets.push_back(bullet);
+		Bullet bullet({ m_position.x, m_position.y }, m_shape.getRotation());
+		AllLists::allBullets.emplace_back(bullet);
 		m_shootDelayCounter = 0;
 	}
 	else if (m_shootDelayCounter >= m_shootDelay)
