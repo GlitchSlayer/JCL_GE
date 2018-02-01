@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 SceneObject::SceneObject(const sf::Vector2f& position, const sf::Vector2f& size)
-	: m_position(position)
+	: m_position(position), isDead(0)
 {
 	m_shape.setPosition(position);
 	m_shape.setSize(size);

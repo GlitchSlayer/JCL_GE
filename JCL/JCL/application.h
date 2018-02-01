@@ -4,8 +4,8 @@ class App
 {
 private:
 	static sf::View gameView;
-	static const sf::Vector2f screenDismentions;
 public:
+	static const sf::Vector2f screenDismentions;
 	static bool isWPressed, 
 				isAPressed, 
 				isSPressed, 

@@ -98,9 +98,6 @@
     <ClCompile Include="allLists.cpp">
       <Filter>Source Files\Additional libraries</Filter>
     </ClCompile>
-    <ClCompile Include="objectsStorage.cpp">
-      <Filter>Source Files\Additional libraries</Filter>
-    </ClCompile>
     <ClCompile Include="sceneObject.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
@@ -118,6 +115,9 @@
     </ClCompile>
     <ClCompile Include="application.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="objectsStorage.cpp">
+      <Filter>Source Files\Additional libraries</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

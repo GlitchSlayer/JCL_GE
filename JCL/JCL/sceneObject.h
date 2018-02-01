@@ -6,6 +6,8 @@ protected:
 	sf::RectangleShape m_shape;
 	sf::Vector2f m_position;
 public:
+	bool isDead;
+
 	SceneObject(const sf::Vector2f& position = { 0, 0 }, const sf::Vector2f& size = { 10, 10 });
 	virtual ~SceneObject() {};
 

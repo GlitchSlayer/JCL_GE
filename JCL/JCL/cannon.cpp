@@ -1,9 +1,10 @@
 #include "stdafx.h"
 
-Cannon::Cannon(const sf::Vector2f& position, const sf::Vector2f& size, const sf::Color& color)
+Cannon::Cannon(const sf::Vector2f& position, const sf::Vector2f& size)
 	: SceneObject(position, size), m_shootDelay(100), m_shootDelayCounter(100)
 {
-	m_shape.setFillColor(color);
+	if(m_texture.loadFromFile("Resources/Textures/Cannon.png"))
+		m_shape.setTexture(&m_texture);
 }
 
 Cannon::~Cannon()
@@ -19,11 +20,11 @@ void Cannon::update(const float& deltaTime)
 
 	const float angle = std::atan2f(distance.y, distance.x) * 180 / phys::PI;
 
-	m_shape.setRotation(angle);
+	m_shape.setRotation(angle+90);
 
 	if (App::isLeftMousePressed && m_shootDelayCounter >= m_shootDelay)
 	{
-		Bullet bullet({ m_position.x, m_position.y }, m_shape.getRotation());
+		Bullet bullet({ m_position.x, m_position.y }, m_shape.getRotation()-90);
 		AllLists::allBullets.push_back(bullet);
 		m_shootDelayCounter = 0;
 	}

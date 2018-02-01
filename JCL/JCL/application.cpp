@@ -31,10 +31,11 @@ void App::run()
 
 		updateAll(deltaTime);
 
-		window.clear();
-		drawAll(window);
 		gameView.reset({ obj::player.getPosition().x - (screenDismentions.x / 2), obj::player.getPosition().y - (screenDismentions.y / 2), screenDismentions.x, screenDismentions.y });
 		window.setView(gameView);
+
+		window.clear();
+		drawAll(window);
 		window.display();
 
 		deltaTime = (gameClock.getElapsedTime().asSeconds() - frameStart) * 10;
@@ -50,9 +51,19 @@ void App::updateAll(const float & deltaTime)
 	for (auto i = 0u; i < AllLists::allBullets.size(); i++)
 	{
 		AllLists::allBullets[i].update(deltaTime);
-		if (AllLists::allBullets[i].isDestroyed)
+		if (AllLists::allBullets[i].isDead)
 		{
 			AllLists::allBullets.erase(i + AllLists::allBullets.begin());
+			i--;
+		}
+	}
+
+	for (auto i = 0u; i < AllLists::allBullets.size(); i++)
+	{
+		AllLists::allBullets[i].update(deltaTime);
+		if (AllLists::allBullets[i].isDead)
+		{
+			AllLists::allBullets.erase( i + AllLists::allBullets.begin() );
 			i--;
 		}
 	}
@@ -62,7 +73,7 @@ void App::drawAll(sf::RenderWindow& window)
 {
 	obj::theRoom.draw(window);
 
-	for (Bullet& bullet : AllLists::allBullets)
+	for (const Bullet& bullet : AllLists::allBullets)
 		bullet.draw(window);
 
 	obj::player.draw(window);

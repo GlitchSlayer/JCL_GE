@@ -1,17 +1,14 @@
 #include "stdafx.h"
 
-namespace phys
+float phys::Approach(const float& flGoal, const float& flCurrent, const float& dt)
 {
-	float Approach(const float& flGoal, const float& flCurrent, const float& dt)
-	{
-		float flDiffrence = flGoal - flCurrent;
+	float flDiffrence = flGoal - flCurrent;
 
-		if (flDiffrence > dt)
-			return flCurrent + dt;
+	if (flDiffrence > dt)
+		return flCurrent + dt;
 
-		if (flDiffrence < -dt)
-			return flCurrent - dt;
+	if (flDiffrence < -dt)
+		return flCurrent - dt;
 
-		return flGoal;
-	}
+	return flGoal;
 }

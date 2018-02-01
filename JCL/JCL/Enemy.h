@@ -9,6 +9,7 @@ private:
 	float m_speed;
 	float m_strength;
 public:
+
 	Enemy(const sf::Vector2f& position = { 0, 0 }, const sf::Vector2f& size = { 10, 10 });
 	virtual ~Enemy();
 	

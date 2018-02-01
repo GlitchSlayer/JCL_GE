@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 Enemy::Enemy(const sf::Vector2f& position, const sf::Vector2f& size)
-	: SceneObject(position, size), m_speed(20)
+	: SceneObject(position, size), m_speed(20), m_healthPoints(100)
 {
 	
 }
@@ -13,24 +13,42 @@ Enemy::~Enemy()
 
 void Enemy::update(const float& deltaTime) {
 
-	sf::Vector2f playerPosition = obj::player.getPosition();
+	static const sf::Vector2f&& halfOfSize = m_shape.getSize() / 2.f;
 
-	float dirX = playerPosition.x - m_position.x;
-	float dirY = playerPosition.y - m_position.y;
+	if (AllLists::allBullets.size() > 0)
+	{
+		for (Bullet& bullet : AllLists::allBullets)
+		{
+			const sf::Vector2f&& distanceToBullet = { 
+				std::abs(bullet.getPosition().x - m_position.x), 
+				std::abs(bullet.getPosition().y - m_position.y) 
+			};
 
-	float length = std::sqrt(dirX * dirX + dirY * dirY);
-
-	if(length != 0) {
-		dirX /= length;
-		dirY /= length;
+			if (distanceToBullet.x < halfOfSize.x && distanceToBullet.y < halfOfSize.y)
+			{
+				bullet.isDead = true;
+				m_healthPoints -= 10;
+			}		
+		}
 	}
-	else {
-		dirX = 0;
-		dirY = 0;
-	}
 
-	m_position.x += dirX * m_speed * deltaTime;
-	m_position.y += dirY * m_speed * deltaTime;
+	if (m_healthPoints <= 0)
+		isDead = true;
+	
+	sf::Vector2f displacementToPlayer(obj::player.getPosition() - m_position);
+
+	float lengthToPlayer = std::sqrt(displacementToPlayer.x * displacementToPlayer.x + displacementToPlayer.y * displacementToPlayer.y);
+
+	if(lengthToPlayer != 0) 
+		displacementToPlayer /= lengthToPlayer;
+	else
+		displacementToPlayer = { 0, 0 };
+
+	m_position += displacementToPlayer * m_speed * deltaTime;
+
+	float angle = std::atan2(displacementToPlayer.y, displacementToPlayer.x) * 180 / phys::PI;
+
+	m_shape.setRotation(angle+90);
 
 	m_shape.setPosition(m_position);
 }

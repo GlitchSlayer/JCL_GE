@@ -8,7 +8,6 @@ private:
 	float m_speed;
 	sf::Vector2f m_direction;
 public:
-	bool isDestroyed;
 
 	Bullet(const sf::Vector2f& position, const float& direction);
 	virtual ~Bullet();
